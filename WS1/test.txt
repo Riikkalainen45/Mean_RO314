@@ -1,0 +1,7 @@
+Here is some text I want to read with node.js.
+There are 2 ways to readFile syncronously(blocking way) or asyncronously.
+Asyncronously is the more popular way, when other commands can be prosessed while program is reading the file. 
+And when done call back function is executed and text printed.
+
+
+
