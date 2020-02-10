@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Riikka",
+    "country": "Finland",
+    "city": "Tuusula",
+    "message": "Hello everybody!"
+  },
+  {
+    "name": "Monica",
+    "country": "USA",
+    "city": "New Yourk",
+    "message": "Nice to meet you all!"
+  },
+  {
+    "name": "Eros",
+    "country": "Italy",
+    "city": "Milan",
+    "message": "Ciao!"
+  }
+]
