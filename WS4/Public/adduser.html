@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Form</title>
-  </head>
-  <body>
-    <h1>ADD USER</h1>
-    <br /><br />
+<h1>Add Info</h1>
+<form method="post" action="/add">
+  Name <input type="text" name="name">
+  Email <input type="text" name="email">
+  Company <input type="text" name="company">
+  <input type="submit" value="Submit">
 
-    <form method="POST" action="/add">
-      Name
-      <input type="text" name="name" />
 
-      Email
-      <input type="text" email="email" />
-
-      Company
-      <input type="text" company="company" />
-
-      Date
-      <input type="text" date="date" />
-
-      <input type="submit" value="Submit" />
-    </form>
-  </body>
-</html>
+</form>

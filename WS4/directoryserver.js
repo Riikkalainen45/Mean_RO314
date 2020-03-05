@@ -8,15 +8,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public/demosite/"));
 
-app.get("/html", function(req, res) {
+app.get("/html", function (req, res) {
   res.send("Hello World");
-});
+})
 
-app.get("/list", function(req, res) {
+app.get("/list", function (req, res) {
   res.sendFile(__dirname + "/list.txt");
 });
-
-app.get("/json", function(req, res) {
+/*
+app.get("/json", function (req, res) {
+  var data = require("/public/file.json");
+  res.json(data);
+});
+*/
+app.get("/json", function (req, res) {
   var data = require(__dirname + "/public/file.json");
 
   var output = '<table border= "5">';
@@ -40,49 +45,51 @@ app.get("/json", function(req, res) {
   res.send(output);
 });
 
+
 // Open form
-app.get("/add", function(req, res) {
+app.get('/add', function (req, res) {
   res.sendFile(__dirname + "/public/adduser.html");
 });
 //form has post /add fundtions to send data back
 /*
-app.post("/add", function(req, res) {
+app.post('/add', function (req, res) {
   var data = "";
-  data += req.body.name + "n";
-  data += req.body.email + "n";
-  data += req.body.company + "n";
-  console.log(data);
+  data += req.body.name + "\n";
+  data += req.body.email + "\n";
+  data += req.body.company + "\n";
+  console.log(req.body);
   res.send(data);
 });
 */
-app.post("/add", function(req, res) {
+app.post("/add", function (req, res) {
   var data = require("./public/file.json");
+  //console.log(req.body);
 
   data.push({
-    Name: req.body.name,
-    Email: req.body.email,
-    Company: req.body.company,
-    Date: new Date()
+    "Name": req.body.name,
+    "Company": req.body.company,
+    "Email": req.body.email,
+    "Date": new Date()
   });
 
-  var lol = JSON.stringify(data);
+  var lol = JSON.stringify(data)
 
   fs.writeFile("public/file.json", lol, err => {
-    if (err) throw err;
+    if (err) throw err
     console.log("Saved info");
   });
-  res.send("Saved atleast nameData Where to ADD for loop NO IDEA!");
+  res.send(data);
 });
 
 /*
-app.get("/add", function(req, res) {
+app.get("/adduser", function (req, res) {
   var data = require("./public/file.json");
 
   data.push({
-    Name: "Toinen Riikka",
-    Company: "Tylypahka",
-    Email: "hoi@tyly.com",
-    Date: "15/02/2020 \r\n"
+    Name: "Marilyn",
+    Company: "Hollywood",
+    Email: "studio@hei.com",
+    Date: "11/02/2020 \r\n"
   });
   var lol = JSON.stringify(data);
 
@@ -93,10 +100,10 @@ app.get("/add", function(req, res) {
   res.send("saved data to file.json");
 });
 */
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.send("Page not found", 404);
-});
+})
 
-app.listen(8081, function() {
+app.listen(8081, function () {
   console.log("Listening port http://127.0.0.1:8081");
 });
