@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<HTML>
+  <head>
+    <title>PictureApi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="another.js"></script>
+
+  <style>
+  img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+  }
+#sijoitus{
+  background-color: gray;
+  color: white;
+}
+
+  </style>
+  </head>
+<body>
+
+<script>
+
+var picture =document.getElementById("picture").value;
+ var url =   "https://pixabay.com/api/?key=15440606-450b8e32ba8370748b03d43f1&q=spring";
+var jsonObj;
+var request;
+var xmlhttp =new XMLHttpRequest();
+
+function myPictures(){
+
+ var picture =document.getElementById("picture").value;
+  var url =   "https://pixabay.com/api/?key=15440606-450b8e32ba8370748b03d43f1&q="+ picture +"&image_type=photo";
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET",url, true);
+    xmlhttp.send();
+
+xmlhttp.onreadystatechange = function(){
+
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+     document.getElementById("sijoitus").innerHTML = xmlhttp.responseText;
+     jsonObj = JSON.parse(xmlhttp.responseText);
+
+     var raaka = xmlhttp.responseText;
+     var data = JSON.parse(raaka);
+
+var searchName= data.hits[1].tags;
+     document.getElementById("sijoitus").innerHTML= searchName;
+
+
+
+
+  var picture1 = data.hits[1].webformatURL;
+  var picture2 = data.hits[2].webformatURL;
+    var picture3 = data.hits[3].webformatURL;
+    var picture4 = data.hits[4].webformatURL;
+    var picture5 = data.hits[5].webformatURL;
+    var picture6 = data.hits[6].webformatURL;
+    var picture7 = data.hits[7].webformatURL;
+    var picture8 = data.hits[8].webformatURL;
+    var picture9 = data.hits[9].webformatURL;
+    var picture10 = data.hits[10].webformatURL;
+    var picture11 = data.hits[11].webformatURL;
+    var picture12 = data.hits[12].webformatURL;
+    var picture13 = data.hits[13].webformatURL;
+    var picture14 = data.hits[14].webformatURL;
+    var picture15 = data.hits[15].webformatURL;
+
+    document.getElementById("kuvanPaikka1").innerHTML = "<img src =" +picture1+ ">" ;
+    document.getElementById("kuvanPaikka2").innerHTML = "<img src =" +picture2+ ">" ;
+    document.getElementById("kuvanPaikka3").innerHTML = "<img src =" +picture3+ ">" ;
+    document.getElementById("kuvanPaikka4").innerHTML = "<img src =" +picture4+ ">" ;
+    document.getElementById("kuvanPaikka5").innerHTML = "<img src =" +picture5+ ">" ;
+    document.getElementById("kuvanPaikka6").innerHTML = "<img src =" +picture6+ ">" ;
+    document.getElementById("kuvanPaikka7").innerHTML = "<img src =" +picture7+ ">" ;
+    document.getElementById("kuvanPaikka8").innerHTML = "<img src =" +picture8+ ">" ;
+    document.getElementById("kuvanPaikka9").innerHTML = "<img src =" +picture9+ ">" ;
+    document.getElementById("kuvanPaikka10").innerHTML = "<img src =" +picture10+ ">" ;
+    document.getElementById("kuvanPaikka11").innerHTML = "<img src =" +picture11+ ">" ;
+    document.getElementById("kuvanPaikka12").innerHTML = "<img src =" +picture12+ ">" ;
+    document.getElementById("kuvanPaikka13").innerHTML = "<img src =" +picture13+ ">" ;
+    document.getElementById("kuvanPaikka14").innerHTML = "<img src =" +picture14+ ">" ;
+    document.getElementById("kuvanPaikka15").innerHTML = "<img src =" +picture15+ ">" ;
+   }
+   }
+}
+</script>
+
+<div class="container-fluid">
+  <h5 color:"white">Select Picture</h5>
+  <input type="text" id="picture" value=""/>
+  <button onclick="myPictures()">Search picture</button><br>
+    <div class="jumbotron text-center">
+    <h1 id="artisti">Gallery</h1>
+  </div>
+
+<div class ="container">
+    <div>
+        <div>
+              <center id="sijoitus">Pictures:</center><br><br>
+          </div>
+      </div>
+    
+    <div class ="row">
+    <div class = "col-sm-1">
+        <div></div>
+        </div>
+        <div class = "col-sm-2">
+        <div id= "kuvanPaikka1"></div>
+        </div>
+        <div class = "col-sm-2">
+        <div id= "kuvanPaikka2"></div>
+        </div>
+    <div class = "col-sm-2">
+    <div id= "kuvanPaikka3"></div>
+    </div>
+    <div class = "col-sm-2">
+        <div id= "kuvanPaikka4"></div>
+        </div>
+        <div class = "col-sm-2">
+        <div id= "kuvanPaikka5"></div>
+        </div>
+    <div class = "col-sm-1">
+        <div></div>
+        </div>
+</div>
+<div class ="row">
+        <div class = "col-sm-1">
+            <div></div>
+            </div>
+            <div class = "col-sm-2">
+            <div id= "kuvanPaikka6"></div>
+            </div>
+            <div class = "col-sm-2">
+            <div id= "kuvanPaikka7"></div>
+            </div>
+        <div class = "col-sm-2">
+        <div id= "kuvanPaikka8"></div>
+        </div>
+        <div class = "col-sm-2">
+            <div id= "kuvanPaikka9"></div>
+            </div>
+            <div class = "col-sm-2">
+            <div id= "kuvanPaikka10"></div>
+            </div>
+        <div class = "col-sm-1">
+            <div></div>
+            </div>
+        </div>
+<div class ="row">
+<div class = "col-sm-1">
+    <div></div>
+    </div>
+    <div class = "col-sm-2">
+    <div id= "kuvanPaikka11"></div>
+    </div>
+    <div class = "col-sm-2">
+    <div id= "kuvanPaikka12"></div>
+    </div>
+<div class = "col-sm-2">
+<div id= "kuvanPaikka13"></div>
+</div>
+<div class = "col-sm-2">
+    <div id= "kuvanPaikka14"></div>
+    </div>
+    <div class = "col-sm-2">
+    <div id= "kuvanPaikka15"></div>
+    </div>
+<div class = "col-sm-1">
+    <div></div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
