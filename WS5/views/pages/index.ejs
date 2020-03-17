@@ -1,0 +1,30 @@
+<% var heading = "New heading"; %>
+<% var content = "New content"; %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('../partials/head') %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+    <main>
+        <div class="jumbotron">
+            <%- include('../partials/lol') %>
+            <%= heading %>
+            <p><%= content %></p>
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+
+</html>
