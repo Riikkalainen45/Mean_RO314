@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<HTML>
+
+<head>
+  <title>PictureApi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+    img {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 200px;
+      height: 200px;
+    }
+
+    #sijoitus {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+
+    var jsonObj;
+    var request;
+    var xmlhttp = new XMLHttpRequest();
+
+    function myPictures() {
+
+      var picture = document.getElementById("picture").value;
+      var url = "https://pixabay.com/api/?key=15440606-450b8e32ba8370748b03d43f1&q=" + picture + "&image_type=photo";
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+
+      xmlhttp.onreadystatechange = function () {
+
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          document.getElementById("sijoitus").innerHTML = xmlhttp.responseText;
+          jsonObj = JSON.parse(xmlhttp.responseText);
+
+          var raaka = xmlhttp.responseText;
+          var data = JSON.parse(raaka);
+          var searchName = data.hits[1].tags;
+          document.getElementById("sijoitus").innerHTML = searchName;
+
+
+          var i = 0;
+          var j = 0;
+          do {
+            j++;
+
+            document.getElementById("kuvanPaikka" + j).innerHTML = "<img src=" + data.hits[i++].webformatURL + ">";
+
+          } while (i < 15 || j < 15);
+
+        }
+      }
+    }
+
+  </script>
+
+  <div class="container-fluid">
+    <h5 color:"white">Select Picture</h5>
+    <input type="text" id="picture" placeholder="Select picture" value="" />
+    <button onclick="myPictures()">Search picture</button><br>
+    <div class="jumbotron text-center">
+      <h1 id="artisti">Gallery</h1>
+    </div>
+
+    <div class="container">
+      <div>
+        <div>
+          <center id="sijoitus">Pictures:</center><br><br>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka1"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka2"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka3"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka4"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka5"></div>
+        </div>
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka6"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka7"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka8"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka9"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka10"></div>
+        </div>
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka11"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka12"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka13"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka14"></div>
+        </div>
+        <div class="col-sm-2">
+          <div id="kuvanPaikka15"></div>
+        </div>
+        <div class="col-sm-1">
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+
+</html>
